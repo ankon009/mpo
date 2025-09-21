@@ -2,33 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to MPO Sakowa High School</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #1e3c72, #2a5298);
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
+      animation: fadeIn 1s ease-in;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
       background: rgba(255, 255, 255, 0.1);
-      padding: 40px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      width: 320px;
+      padding: 30px;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      width: 100%;
+      max-width: 360px;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
     .container h2 {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      text-align: center;
     }
 
     input[type="text"],
@@ -37,26 +58,35 @@
       padding: 12px;
       margin: 10px 0;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.3);
       color: #fff;
-      font-size: 14px;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background: rgba(255, 255, 255, 0.5);
+      outline: none;
     }
 
     input[type="submit"] {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       background-color: #0078D7;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     input[type="submit"]:hover {
       background-color: #005a9e;
+      transform: scale(1.02);
     }
 
     ::placeholder {
@@ -68,26 +98,48 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 15px 40px;
-      font-size: 18px;
+      padding: 14px 24px;
+      font-size: 16px;
       font-weight: bold;
       color: white;
       background-color: #d32f2f;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       margin-top: 20px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .mpo-button:hover {
+      background-color: #b71c1c;
+      transform: scale(1.03);
     }
 
     .hidden {
       display: none;
     }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+
+      input[type="submit"],
+      .mpo-button {
+        font-size: 15px;
+        padding: 12px 20px;
+      }
+
+      .container h2 {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container" id="loginPage">
-    <h2>Welcome to MPO Sakowa High School</h2>
+    <h2><i class="fas fa-lock"></i> Welcome to MPO Sakowa High School</h2>
     <form onsubmit="return validateLogin()">
       <input type="text" id="username" placeholder="Username" required>
       <input type="password" id="password" placeholder="Password" required>
@@ -96,10 +148,9 @@
   </div>
 
   <div class="container hidden" id="mpoPage">
-    <h2>Access Granted</h2>
+    <h2><i class="fas fa-check-circle"></i> Access Granted</h2>
     <button class="mpo-button">
-      <i class="fas fa-file-alt"></i>
-      MPO
+      <i class="fas fa-file-alt"></i> MPO
     </button>
   </div>
 
@@ -114,7 +165,7 @@
       } else {
         alert("Invalid credentials. Please try again.");
       }
-      return false; // Prevent form submission
+      return false;
     }
   </script>
 </body>
