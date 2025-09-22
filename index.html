@@ -16,7 +16,6 @@
     .page { display: none; padding: 20px; }
     .active { display: block; }
 
-    /* Login Page */
     .login-container {
       max-width: 350px;
       margin: 100px auto;
@@ -49,7 +48,6 @@
       margin-top: 10px;
     }
 
-    /* Modules Page */
     .header { text-align: center; margin-top: 40px; }
     .modules {
       display: flex; flex-wrap: wrap;
@@ -69,7 +67,6 @@
     .ims { background-color: #007bff; }
     .mpo { background-color: #dc3545; }
 
-    /* MPO Page */
     .panel {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px; max-width: 1000px; margin: 40px auto;
@@ -87,6 +84,19 @@
     .card-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
     .card-desc { font-size: 14px; color: #666; }
     .pending { border: 2px solid #ffc107; }
+
+    /* New MPO Image Page */
+    .image-container {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -135,7 +145,11 @@
       <h1>Monthly Payment Order (MPO) Online Application</h1>
     </div>
     <div class="panel">
-      <div class="card"><div class="card-icon">📄</div><div class="card-title">New MPO</div><div class="card-desc">Create a new MPO application</div></div>
+      <div class="card" onclick="goToPage('newMpoPage')">
+        <div class="card-icon">📄</div>
+        <div class="card-title">New MPO</div>
+        <div class="card-desc">Create a new MPO application</div>
+      </div>
       <div class="card"><div class="card-icon">🔄</div><div class="card-title">Transfer</div><div class="card-desc">Apply for staff transfer</div></div>
       <div class="card"><div class="card-icon">🎓</div><div class="card-title">B.Ed. Scale</div><div class="card-desc">Request B.Ed. salary scale</div></div>
       <div class="card"><div class="card-icon">⬆️</div><div class="card-title">Upper Grade</div><div class="card-desc">Apply for grade promotion</div></div>
@@ -143,6 +157,16 @@
       <div class="card"><div class="card-icon">📈</div><div class="card-title">Arrear</div><div class="card-desc">Apply for arrear payments</div></div>
       <div class="card"><div class="card-icon">🗑️</div><div class="card-title">Index Delete/Release</div><div class="card-desc">Manage index records</div></div>
       <div class="card pending"><div class="card-icon">📬</div><div class="card-title">Online Application (Inbox)</div><div class="card-desc">Pending applications</div></div>
+    </div>
+  </div>
+
+  <!-- New MPO Image Page -->
+  <div id="newMpoPage" class="page">
+    <div class="header">
+      <h1>New MPO Application Preview</h1>
+    </div>
+    <div class="image-container">
+      <img src="https://i.postimg.cc/x1VM4Wj9/sakowa-1.jpg" alt="New MPO Application Image">
     </div>
   </div>
 
@@ -162,7 +186,6 @@
         errorMsg.textContent = 'Incorrect password. Please try again.';
       }
     }
-  </script>
+   </script>
 </body>
 </html>
-
